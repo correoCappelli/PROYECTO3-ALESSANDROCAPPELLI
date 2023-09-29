@@ -273,7 +273,7 @@ PORTSQL=3306
 DATABASE="pruebas_trailerflix"
 HOST='localhost'
 USUARIO='root'
-PASSWORD='mysql#500alessandro'
+PASSWORD='tu_contraseña'
 ```
 
 Utiliza   ***DATABASE*** para modificar la base de datos a la que acceder
