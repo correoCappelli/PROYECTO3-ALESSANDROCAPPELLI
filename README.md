@@ -261,7 +261,7 @@ async function agregarActoresAPeliculas(lista,nuevaPelicula){
 PORT=3008
 
 PORTSQL=3306
-DATABASE="pruebas_trailerflix"
+DATABASE="tu_base_de_datos"
 HOST='localhost'
 USUARIO='root'
 PASSWORD='tu_contraseña'
@@ -270,7 +270,8 @@ PASSWORD='tu_contraseña'
 Utiliza   ***DATABASE*** para modificar la base de datos a la que acceder
 
 >crea un archivo .env en la raiz de tu Proyecto y agrega tus variables
-
+>
+>se adjunta una BD para pruebas *"pruebas_trailerflix"* en formato *.sql*
 
 ## Configuracion Acceso a MySQL
 
