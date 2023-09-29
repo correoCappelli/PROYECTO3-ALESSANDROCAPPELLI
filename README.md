@@ -63,7 +63,16 @@ Se utiliza con una base de datos d peliculas (trailerflix) proporcionada por la 
 * Asegurarse que el proceso de Windows *"MySQL80"* está corriendo 
 * nodemon start
 
-> en el ZIP se agregan una base de datos para pruebas **pruebas_trailerflix**
+> Dentro de la carpeta **/dbdesigner+basededatos** se incluyen 3 archivos
+>
+> * dbdesigner+basededatos\DBdesigner_proyecto3.pdf
+> >pdf del esquema DBdesigner
+>
+> * dbdesigner+basededatos\pruebas_trailerflix.sql
+> >backup de la base de datos utilizada para pruebas en .sql
+>
+> * dbdesigner+basededatos\trailerflix - Clase 27.json
+> >JSON del catalogo de peliculas trailerflix
 >
 >las pruebas se hicieron utilizando **Thunder Client**
 ## EndPoints
