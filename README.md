@@ -37,6 +37,7 @@ e. al menos un gráfico construído con Markdown, en la sección que consideres 
     - [http//:localhost:3008/api/peliculas/poster](#httplocalhost3008apipeliculasposter)
 - [SUMARIO](#sumario)
   - [Introduccion](#introduccion)
+  - [Instalacion](#instalacion)
   - [EndPoints](#endpoints)
     - [catalogo](#catalogo)
     - [vistas](#vistas)
@@ -54,6 +55,17 @@ Es una API CRUD con integracion de MySQL en un proyecto Node.js. Tambien utiliza
 
 Se utiliza con una base de datos d peliculas (trailerflix) proporcionada por la institucion Academica ***UNTREF*** y ***ARGENTINA PROGRAMA 4.0***.
 
+## Instalacion
+
+* Git Bash a la carpeta del Proyecto
+* npm install
+* crear *.env* en la raiz del proyecto. Setear las variables de usuario y base de datos MySQL
+* Asegurarse que el proceso de Windows *"MySQL80"* está corriendo 
+* nodemon start
+
+> en el ZIP se agregan una base de datos para pruebas **pruebas_trailerflix**
+>
+>las pruebas se hicieron utilizando **Thunder Client**
 ## EndPoints
 
 ### catalogo
