@@ -45,6 +45,7 @@ e. al menos un gráfico construído con Markdown, en la sección que consideres 
   - [Variables de Entorno (.Env)](#variables-de-entorno-env)
   - [Configuracion Acceso a MySQL](#configuracion-acceso-a-mysql)
   - [Asociaciones de SEQUELIZE](#asociaciones-de-sequelize)
+  - [Plantillas EJS y carpeta de Posters](#plantillas-ejs-y-carpeta-de-posters)
 
 
 ## Introduccion
@@ -310,3 +311,12 @@ peliculasTabla.belongsToMany(ActorPelicula, { through: 'pelicula_actor' });
 ActorPelicula.belongsToMany(peliculasTabla, { through: 'pelicula_actor' });
 ```
 
+## Plantillas EJS y carpeta de Posters
+
+>la carpeta **views** de EJS se cambió a **plantillas_ejs** utilizando 
+
+```Javascript
+app.set('views',path.join(__dirname,'plantillas_ejs'))
+app.use(express.static('plantillas_ejs'));
+```
+>Ambas carpetas **plantillas_ejs** y **public/posters** se sirven estaticamente. De esta manera , al agregar una nueva pelicula, la ruta del poster es ej:-  */icono1.png* 
