@@ -45,7 +45,6 @@ e. al menos un gráfico construído con Markdown, en la sección que consideres 
   - [Variables de Entorno (.Env)](#variables-de-entorno-env)
   - [Configuracion Acceso a MySQL](#configuracion-acceso-a-mysql)
   - [Asociaciones de SEQUELIZE](#asociaciones-de-sequelize)
-  - [Mensajes de Error](#mensajes-de-error)
 
 
 ## Introduccion
@@ -65,7 +64,7 @@ Se utiliza con una base de datos d peliculas (trailerflix) proporcionada por la 
 |GET|http://localhost:3008/api/peliculas/:id|Ruta para BUSCAR una pelicula por su ID|
 |GET|http://localhost:3008/api/peliculas/genero/:genero|Ruta para BUSCAR peliculas por GENERO.|
 |GET|http://localhost:3008/api/peliculas/categoria/:categoria|Ruta para BUSCAR pliculas por CATEGORIA|
-|GET|http://localhost:3008/api/peliculas/titulo/:titulo|modificar el precio de un producto. Solo podrás modificar el precio del producto, no sus otros parámetros|
+|GET|http://localhost:3008/api/peliculas/titulo/:titulo|BUSCAR pelicula por su Titulo (parcial o completo)|
 |POST|http://localhost:3008/api/peliculas|AGREGA una pelicula al catalogo|
 |PUT|http://localhost:3008/api/peliculas/update/:id|Ruta para UPDATE una pelicula por su ID|
 |DELETE|http://localhost:3008/api/peliculas/:id|Ruta para ELIMINAR una pelicula por su ID|
@@ -101,17 +100,9 @@ Formato de las PELICULAS en la Base de Datos en formato Json :
    },
 ```
 
->Ejemplo PATCH : 
->>si se envia la peticion PATCH y se modificaron los campos invalidos :
->>>No se pudo modificar o no hubo cambios.
->>>Verificar campos modificados
->>>Ver error en el log
->>>Status: 404 Not Found Size: 88 Bytes Time: 1.25 s
->
->
->>>NO se pueden modificar estos campos
->>>codigo|nombre|categoria : 9012 | Detergente | Limpieza
->>>Desconectado de MongoDB
+>Al realizar POST de un nuevo item . Al Objeto se le agrega una propiedad CATEGORY_ID que se le asigna por su asociacion HasMany con CATEGORIA
+
+>las KEY ***genero*** y ***reparto*** se almacenan en arreglos por medio de los metodos Split(",") , que genera un nuevo array con cada uno de los items separados por ",".  
 
 ## Codigos de PUT y POST
 ```javascript
@@ -318,45 +309,3 @@ peliculasTabla.belongsToMany(ActorPelicula, { through: 'pelicula_actor' });
 ActorPelicula.belongsToMany(peliculasTabla, { through: 'pelicula_actor' });
 ```
 
-## Mensajes de Error
-
-```mermaid
-graph TD;
-!client-->500:Error-al-conectarse-a-MongoDB;
-```
-
-```mermaid
-graph TD;
-/*-->404:endpoint-inexistente;
-```
-
-```mermaid
-graph TD;
-GET/supermercado-->500:error-al-obtener-los-productos;
-```
-
-```mermaid
-graph TD;
-GET/supermercado/../:codigoÚ:nombreÚ:categoria-->500:error-acceso-base-de-datos;
-GET/supermercado/../:codigoÚ:nombreÚ:categoria-->404:!productos:no-se-encontro;
-GET/supermercado/../:codigoÚ:nombreÚ:categoria-->500:error-al-obtner-el-producto;
-```
-
-```mermaid
-graph TD;
-POST/supermercado-->400:!nuevoProducto:error-formato-de-datos;
-POST/supermercado-->500:error-al-crear-nuevo-producto;
-POST/supermercado-->500:error-acceso-base-de-datos;
-```
-
-
-```mermaid
-graph TD;
-PATCH/supermercado/:codigo-->400:!nueva_data:error-formato-de-datos;
-PATCH/supermercado/:codigo-->500:error-al-modificar-nuevo-producto;
-PATCH/supermercado/:codigo-->500:error-acceso-base-de-datos;
-PATCH/supermercado/:codigo-->Console.error:campos-modificados-no-validos;
-PATCH/supermercado/:codigo-->404:resultado.modifiedCount$eq0:nohubo-cambios-o-error-en-campos;
-404:resultado.modifiedCount$eq0:nohubo-cambios-o-error-en-campos===Console.error:campos-modificados-no-validos;
-Console.error:campos-modificados-no-validos-->JSON:nueva_data:verificar-campos-del-producto-excepto-precio;
-```
